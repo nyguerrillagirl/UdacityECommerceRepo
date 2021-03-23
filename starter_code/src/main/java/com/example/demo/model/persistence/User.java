@@ -22,6 +22,7 @@ public class User {
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	@Column(nullable = false)
 	private String password;
+	
 	public String getPassword(){
 		return password;
 	}
@@ -34,6 +35,14 @@ public class User {
 	@JsonIgnore
     private Cart cart;
 	
+	
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("id: " + id);
+		sb.append("; username: " + username);
+		
+		return sb.toString();
+	}
 	public Cart getCart() {
 		return cart;
 	}

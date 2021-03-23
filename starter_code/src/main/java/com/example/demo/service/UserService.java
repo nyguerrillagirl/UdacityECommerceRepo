@@ -2,6 +2,8 @@ package com.example.demo.service;
 
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,7 @@ import com.example.demo.model.persistence.repositories.UserRepository;
 
 @Service
 public class UserService {
+	private static Logger logger = LoggerFactory.getLogger(UserService.class);
 	
 	@Autowired
 	private CartRepository cartRepository;
@@ -24,7 +27,14 @@ public class UserService {
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	public User prepareNewUser(String username) {
-		User user = new User();
+		// First check that this username is not already in the database
+		User user = userRepository.findByUsername(username);
+		if (user != null) {
+			throw new DuplicateUsernameException("User with username: " + username + " already exists.");
+		} else {
+			user = new User();
+		}
+		
 		user.setUsername(username);
 		Cart cart = new Cart();
 		cartRepository.save(cart);
@@ -48,7 +58,12 @@ public class UserService {
 	}
 	
 	public User findByUsername(String username) {
-		return userRepository.findByUsername(username);
+		logger.info("===> findByUsername - " + username);
+		User user = userRepository.findByUsername(username);
+		if (user != null) {
+			logger.info("===> findByUsername:user from database - " + user.toString());
+		}
+		return user;
 	}
 
 	public User findById(Long id) {
@@ -58,5 +73,21 @@ public class UserService {
 		} else {
 			throw new UserNotFoundException("User with id: " + id + " not found.");
 		}
+	}
+
+	public boolean validateUserIdMatchesAuth(Long id, String name) {
+		boolean result = true;
+		// Obtain db user (using name) match with id
+		User user = this.userRepository.findByUsername(name);
+		if (user == null) {
+			result = false;
+		} else {
+			result = user.getId() == id.longValue();
+		}
+		return result;
+	}
+
+	public boolean validateUserNameMatchesAuth(String username, String name) {
+		return username.equals(name);
 	}
 }

@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -24,23 +25,27 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-	@GetMapping("/ping")
-	public ResponseEntity<String> pingUserApi() {
-		logger.info("UserController:pingUserApi - invoked");
-		return ResponseEntity.ok("App is alive and well.");
-	}
+
 	@GetMapping("/id/{id}")
-	public ResponseEntity<User> findById(@PathVariable Long id) {
+	public ResponseEntity<User> findById(@PathVariable Long id, Authentication authentication) {
 		logger.info("UserController:findById - invoked");
-		User user = userService.findById(id);
-		return ResponseEntity.ok(user);
+		if (userService.validateUserIdMatchesAuth(id, authentication.getName())) {
+			User user = userService.findById(id);
+			return ResponseEntity.ok(user);
+		} else {
+			return ResponseEntity.badRequest().build();
+		}
 	}
 	
 	@GetMapping("/{username}")
-	public ResponseEntity<User> findByUserName(@PathVariable String username) {
+	public ResponseEntity<User> findByUserName(@PathVariable String username, Authentication authentication) {
 		logger.info("UserController:findByUserName - invoked");
-		User user = userService.findByUsername(username);
-		return user == null ? ResponseEntity.notFound().build() : ResponseEntity.ok(user);
+		if (userService.validateUserNameMatchesAuth(username, authentication.getName())) {
+			User user = userService.findByUsername(username);
+			return user == null ? ResponseEntity.notFound().build() : ResponseEntity.ok(user);
+		} else {
+			return ResponseEntity.badRequest().build();		
+		}
 	}
 	
 	@PostMapping("/create")
@@ -52,13 +57,17 @@ public class UserController {
 			return ResponseEntity.badRequest().build();
 		}
 		
+		try {
+			User user = userService.prepareNewUser(createUserRequest.getUsername());
 
-		User user = userService.prepareNewUser(createUserRequest.getUsername());
-
-		userService.saveNewUserAccount(user, createUserRequest.getPassword());
-		logger.info("UserController:createUser - new user successfully created.");
-		
-		return ResponseEntity.ok(user);
+			userService.saveNewUserAccount(user, createUserRequest.getPassword());
+			logger.info("UserController:createUser - new user successfully created.");
+			
+			return ResponseEntity.ok(user);
+		} catch (Exception e) {
+			logger.error("UserController:createUser - " + e.getMessage());
+			return ResponseEntity.badRequest().build();
+		}
 	}
 	
 }
