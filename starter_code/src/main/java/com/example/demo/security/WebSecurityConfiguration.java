@@ -26,11 +26,14 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable().authorizeRequests()
                 .antMatchers(HttpMethod.POST, SecurityConstants.SIGN_UP_URL).permitAll()
+                .antMatchers("/api/user/ping").permitAll()
+                .antMatchers("/h2-console/**").permitAll() // TEMPORARY for H2
                 .anyRequest().authenticated()
                 .and()
                 .addFilter(new JWTAuthenticationFilter(authenticationManager()))
                 .addFilter(new JWTAuthenticationVerficationFilter(authenticationManager()))
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        http.headers().frameOptions().disable(); // TEMPORARY for H2
     }
     
     @Override
