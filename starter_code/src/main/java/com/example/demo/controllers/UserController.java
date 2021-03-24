@@ -7,6 +7,7 @@ import com.example.demo.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
@@ -31,7 +32,7 @@ public class UserController {
 			User user = userService.findById(id);
 			return ResponseEntity.ok(user);
 		} else {
-			return ResponseEntity.badRequest().build();
+			return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
 		}
 	}
 	
@@ -42,7 +43,7 @@ public class UserController {
 			User user = userService.findByUsername(username);
 			return user == null ? ResponseEntity.notFound().build() : ResponseEntity.ok(user);
 		} else {
-			return ResponseEntity.badRequest().build();		
+			return ResponseEntity.status(HttpStatus.FORBIDDEN).build();	
 		}
 	}
 	

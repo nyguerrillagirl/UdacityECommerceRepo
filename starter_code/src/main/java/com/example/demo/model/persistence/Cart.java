@@ -16,11 +16,15 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name = "cart")
 public class Cart {
+	private static Logger logger = LoggerFactory.getLogger(Cart.class);
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,6 +45,13 @@ public class Cart {
 	@JsonProperty
 	private BigDecimal total;
 	
+	
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("cart id: " + id);
+		sb.append("user id: " + user.getId());
+		return sb.toString();
+	}
 	public BigDecimal getTotal() {
 		return total;
 	}
@@ -74,6 +85,7 @@ public class Cart {
 	}
 	
 	public void addItem(Item item) {
+		logger.info("Cart:addItem - " + item.toString());
 		if(items == null) {
 			items = new ArrayList<>();
 		}

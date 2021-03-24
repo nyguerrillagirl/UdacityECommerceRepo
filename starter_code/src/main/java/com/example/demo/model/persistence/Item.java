@@ -35,6 +35,12 @@ public class Item {
 	@JsonProperty
 	private String description;
 	
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("id: " + id);
+		sb.append(";name: " + name);
+		return sb.toString();
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;

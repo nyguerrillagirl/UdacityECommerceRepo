@@ -40,7 +40,9 @@ public class User {
 		StringBuilder sb = new StringBuilder();
 		sb.append("id: " + id);
 		sb.append("; username: " + username);
-		
+		if (cart != null) {
+			sb.append("cart: " + cart.getId());
+		}
 		return sb.toString();
 	}
 	public Cart getCart() {
