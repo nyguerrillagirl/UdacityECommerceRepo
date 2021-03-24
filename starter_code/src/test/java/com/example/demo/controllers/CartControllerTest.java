@@ -1,7 +1,6 @@
 package com.example.demo.controllers;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -19,12 +18,10 @@ import org.springframework.test.web.servlet.MvcResult;
 
 import com.example.demo.model.persistence.Item;
 import com.example.demo.model.persistence.User;
-import com.example.demo.model.requests.ModifyCartRequest;
 import com.example.demo.security.SecurityConstants;
 import com.example.demo.service.UserService;
 import com.example.demo.service.UtilityService;
 import com.example.demo.service.UtilityService.TestUser;
-import com.google.gson.Gson;
 
 @SpringBootTest
 @AutoConfigureMockMvc
