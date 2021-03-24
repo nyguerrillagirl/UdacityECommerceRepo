@@ -31,7 +31,7 @@ class UserControllerTest2 {
 
 	@Test
 	public void testLogin() throws Exception {
-		String loginBody = utilityService.createLogin(utilityService.username1, true).getLoginBody();
+		String loginBody = utilityService.createLogin(UtilityService.username1, true).getLoginBody();
 		MvcResult mvcResult = this.mockMvc.perform(post("/login").content(loginBody)
 				.contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON)).andReturn();
 		String headerValue = mvcResult.getResponse().getHeader("Authorization");
@@ -48,7 +48,7 @@ class UserControllerTest2 {
 
 	@Test
 	public void testGetUserId() throws Exception {
-		TestUser testUser = utilityService.createLogin(utilityService.username2, true);
+		TestUser testUser = utilityService.createLogin(UtilityService.username2, true);
 		String loginBody = testUser.getLoginBody();
 		Long id = testUser.getUser().getId();
 		
@@ -64,7 +64,7 @@ class UserControllerTest2 {
 
 	@Test
 	public void testGetUserIdFailure() throws Exception {
-		String loginBody = utilityService.createLogin(utilityService.username3, true).getLoginBody();
+		String loginBody = utilityService.createLogin(UtilityService.username3, true).getLoginBody();
 		MvcResult mvcResult = this.mockMvc.perform(post("/login").content(loginBody)
 				.contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON)).andReturn();
 		String headerValue = mvcResult.getResponse().getHeader("Authorization");
@@ -78,7 +78,7 @@ class UserControllerTest2 {
 
 	@Test
 	void testGetUserByName() throws Exception {
-		TestUser testUser = utilityService.createLogin(utilityService.username4, true);
+		TestUser testUser = utilityService.createLogin(UtilityService.username4, true);
 		String loginBody = testUser.getLoginBody();
 		Long id = testUser.getUser().getId();
 		
@@ -87,21 +87,21 @@ class UserControllerTest2 {
 		String headerValue = mvcResult.getResponse().getHeader("Authorization");
 
 		this.mockMvc
-				.perform(get("/api/user/" + utilityService.username4).accept(MediaType.APPLICATION_JSON)
+				.perform(get("/api/user/" + UtilityService.username4).accept(MediaType.APPLICATION_JSON)
 						.header(SecurityConstants.HEADER_STRING, headerValue))
 				.andDo(print()).andDo(print()).andExpect(status().isOk()).andExpect(jsonPath("$.id").value(id))
-				.andExpect(jsonPath("$.username").value(utilityService.username4));
+				.andExpect(jsonPath("$.username").value(UtilityService.username4));
 	}
 	
 	@Test
 	void testGetUserByNameFailure() throws Exception {
-		String loginBody = utilityService.createLogin(utilityService.username5, true).getLoginBody();
+		String loginBody = utilityService.createLogin(UtilityService.username5, true).getLoginBody();
 		MvcResult mvcResult = this.mockMvc.perform(post("/login").content(loginBody)
 				.contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON)).andReturn();
 		String headerValue = mvcResult.getResponse().getHeader("Authorization");
 
 		this.mockMvc
-				.perform(get("/api/user/" + utilityService.username1).accept(MediaType.APPLICATION_JSON)
+				.perform(get("/api/user/" + UtilityService.username1).accept(MediaType.APPLICATION_JSON)
 						.header(SecurityConstants.HEADER_STRING, headerValue))
 				.andDo(print()).andDo(print()).andExpect(status().is4xxClientError());
 	}

@@ -41,7 +41,7 @@ class CartControllerTest {
 	public void testAddToCart() throws Exception {
 		
 		// Create a user
-		TestUser testUser = utilityService.createLogin(utilityService.username2, true);
+		TestUser testUser = utilityService.createLogin(UtilityService.username2, true);
 		String loginBody = testUser.getLoginBody();
 		Long id = testUser.getUser().getId();
 		
@@ -54,7 +54,7 @@ class CartControllerTest {
 		// get an item to add to the cart	
 		Item item = utilityService.getRandomItem();
 		System.out.println("Item adding to cart: " + item.toString());
-		String requestBody = utilityService.createJsonModifyCartRequest(utilityService.username2, item.getId(), 3);
+		String requestBody = utilityService.createJsonModifyCartRequest(UtilityService.username2, item.getId(), 3);
 		
 		// Send a request to add item to the cart
 		this.mockMvc
@@ -64,7 +64,7 @@ class CartControllerTest {
 						.contentType(MediaType.APPLICATION_JSON)
 						.accept(MediaType.APPLICATION_JSON))
 				.andDo(print()).andExpect(status().isOk()).andExpect(jsonPath("$.id").exists())
-				.andExpect(jsonPath("$.user.username").value(utilityService.username2));
+				.andExpect(jsonPath("$.user.username").value(UtilityService.username2));
 		
 	}	
 	
@@ -73,7 +73,7 @@ class CartControllerTest {
 	public void testRemoveFromCart() throws Exception {
 		
 		// Create a user
-		TestUser testUser = utilityService.createLogin(utilityService.username2, true);
+		TestUser testUser = utilityService.createLogin(UtilityService.username2, true);
 		String loginBody = testUser.getLoginBody();
 		Long id = testUser.getUser().getId();
 		
@@ -86,7 +86,7 @@ class CartControllerTest {
 		// get an item to add to the cart	
 		Item item = utilityService.getRandomItem();
 		System.out.println("Item adding to cart: " + item.toString());
-		String requestBody = utilityService.createJsonModifyCartRequest(utilityService.username2, item.getId(), 3);
+		String requestBody = utilityService.createJsonModifyCartRequest(UtilityService.username2, item.getId(), 3);
 		
 		// Send a request to add item to the cart
 		this.mockMvc
@@ -96,10 +96,10 @@ class CartControllerTest {
 						.contentType(MediaType.APPLICATION_JSON)
 						.accept(MediaType.APPLICATION_JSON))
 				.andDo(print()).andExpect(status().isOk()).andExpect(jsonPath("$.id").exists())
-				.andExpect(jsonPath("$.user.username").value(utilityService.username2));
+				.andExpect(jsonPath("$.user.username").value(UtilityService.username2));
 		
 		// This is where we start the test ...we will remove two items from the cart
-		requestBody = utilityService.createJsonModifyCartRequest(utilityService.username2, item.getId(), 2);
+		requestBody = utilityService.createJsonModifyCartRequest(UtilityService.username2, item.getId(), 2);
 		this.mockMvc
 		.perform(post("/api/cart/removeFromCart").accept(MediaType.APPLICATION_JSON)
 				.header(SecurityConstants.HEADER_STRING, headerValue)
@@ -107,10 +107,10 @@ class CartControllerTest {
 				.contentType(MediaType.APPLICATION_JSON)
 				.accept(MediaType.APPLICATION_JSON))
 		.andDo(print()).andExpect(status().isOk()).andExpect(jsonPath("$.id").exists())
-		.andExpect(jsonPath("$.user.username").value(utilityService.username2));
+		.andExpect(jsonPath("$.user.username").value(UtilityService.username2));
 		
 		// test that user still has 1 item on their cart
-		User user = userService.findByUsername(utilityService.username2);
+		User user = userService.findByUsername(UtilityService.username2);
 		assertTrue(user.getCart().getItems().size() == 1);
 	}	
 
