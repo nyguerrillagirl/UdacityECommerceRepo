@@ -95,7 +95,7 @@ public class UtilityService {
 	
 	public String createJsonModifyCartRequest(String username, Long itemId, int quantity) {
 		ModifyCartRequest mcr = new ModifyCartRequest();
-		mcr.setUsername(UtilityService.username2);
+		mcr.setUsername(username);
 		mcr.setItemId(itemId);
 		mcr.setQuantity(quantity);
 		Gson gson = new Gson();

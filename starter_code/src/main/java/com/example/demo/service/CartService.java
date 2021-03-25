@@ -36,6 +36,7 @@ public class CartService {
 	private UserService userService;
 
 	public Cart addTocart(ModifyCartRequest request, String authUsername) {
+		logger.info("CartService:addTocart - request Username: " + request.getUsername());
 		logger.info("CartService:addTocart - authUsername: " + authUsername);
 		if (userService.validateUserNameMatchesAuth(request.getUsername(), authUsername)) {
 			User user = userRepository.findByUsername(request.getUsername());
