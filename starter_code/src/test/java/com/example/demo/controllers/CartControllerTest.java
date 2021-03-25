@@ -43,7 +43,6 @@ class CartControllerTest {
 		// Create a user
 		TestUser testUser = utilityService.createLogin(UtilityService.username2, true);
 		String loginBody = testUser.getLoginBody();
-		Long id = testUser.getUser().getId();
 		
 		// Login this user
 		MvcResult mvcResult = this.mockMvc.perform(post("/login").content(loginBody)
@@ -75,7 +74,6 @@ class CartControllerTest {
 		// Create a user
 		TestUser testUser = utilityService.createLogin(UtilityService.username2, true);
 		String loginBody = testUser.getLoginBody();
-		Long id = testUser.getUser().getId();
 		
 		// Login this user
 		MvcResult mvcResult = this.mockMvc.perform(post("/login").content(loginBody)

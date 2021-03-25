@@ -56,6 +56,7 @@ class CartServiceTest {
 		// Create user for DB
 		String username = "Lorraine Figueroa";
 		TestUser testUser = utilityService.createLogin(username, true);
+		System.out.println("testUser created: " + testUser.toString());
 		
 		ModifyCartRequest mcr = new ModifyCartRequest();
 		mcr.setUsername(username);	
@@ -102,6 +103,7 @@ class CartServiceTest {
 		// Create user for DB
 		String username = "Lorraine Figueroa";
 		TestUser testUser = utilityService.createLogin(username, true);
+		System.out.println("testUser created: " + testUser.toString());
 		
 		ModifyCartRequest mcr = new ModifyCartRequest();
 		mcr.setUsername(username);	
@@ -109,7 +111,7 @@ class CartServiceTest {
 		mcr.setQuantity(2);
 		
 		RuntimeException exception = assertThrows(ItemNotFoundException.class, () -> {
-			cartService.addTocart(mcr, username);
+			cartService.removeFromCart(mcr, username);
 	    });
 
 		String expectedMessage = "The item with id: 100 not found.";
