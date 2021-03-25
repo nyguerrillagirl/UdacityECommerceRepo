@@ -47,10 +47,12 @@ public class CartService {
 			logger.info("CartService:addTocart - processing user: " + user.toString());
 			Optional<Item> optionalItem = itemRepository.findById(request.getItemId());
 			logger.info("CartService:addTocart - processing item: " + request.getItemId());
-			Item item = optionalItem.get();
+			Item item;
 			if (!optionalItem.isPresent()) {
 				logger.info("CartService:addTocart - ItemNotFoundException.");
 				throw new ItemNotFoundException("The item with id: " + request.getItemId() + " not found.");
+			} else {
+				item = optionalItem.get();
 			}
 			Cart cart = user.getCart();
 			IntStream.range(0, request.getQuantity()).forEach(i -> cart.addItem(item));
