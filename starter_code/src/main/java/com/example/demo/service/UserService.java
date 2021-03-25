@@ -33,7 +33,7 @@ public class UserService {
 		// First check that this username is not already in the database
 		User user = userRepository.findByUsername(username);
 		if (user != null) {
-			logger.info("UserService:prepareNewUser - UserNotFoundException.");
+			logger.info("UserService:prepareNewUser - DuplicateUsernameException.");
 			throw new DuplicateUsernameException("User with username: " + username + " already exists.");
 		} else {
 			user = new User();
