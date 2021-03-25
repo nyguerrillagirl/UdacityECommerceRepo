@@ -1,0 +1,75 @@
+2021-03-25 18:02:06.522  INFO 71428 --- [           main] com.example.demo.SareetaApplication      : Starting SareetaApplication on DESKTOP-G57UGNQ with PID 71428 (D:\2021_A\ONLINE_COURSES\UDACITY\JWDND\PROJECTS\ECOMMERCE_WS\nd035-c4-Security-and-DevOps\starter_code\target\classes started by lafig in D:\2021_A\ONLINE_COURSES\UDACITY\JWDND\PROJECTS\ECOMMERCE_WS\nd035-c4-Security-and-DevOps\starter_code)
+2021-03-25 18:02:06.523  INFO 71428 --- [           main] com.example.demo.SareetaApplication      : No active profile set, falling back to default profiles: default
+2021-03-25 18:02:06.856  INFO 71428 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-03-25 18:02:06.895  INFO 71428 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 32ms. Found 4 JPA repository interfaces.
+2021-03-25 18:02:07.355  INFO 71428 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-03-25 18:02:07.362  INFO 71428 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-03-25 18:02:07.362  INFO 71428 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2021-03-25 18:02:07.462  INFO 71428 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-03-25 18:02:07.462  INFO 71428 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 906 ms
+2021-03-25 18:02:07.491  INFO 71428 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-03-25 18:02:07.617  INFO 71428 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-03-25 18:02:07.622  INFO 71428 --- [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:bootapp'
+2021-03-25 18:02:07.738  INFO 71428 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-03-25 18:02:07.772  INFO 71428 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.18.Final
+2021-03-25 18:02:07.871  INFO 71428 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2021-03-25 18:02:07.959  INFO 71428 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-03-25 18:02:08.447  INFO 71428 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-03-25 18:02:08.453  INFO 71428 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-03-25 18:02:08.688  WARN 71428 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-03-25 18:02:09.003  INFO 71428 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@da11873, org.springframework.security.web.context.SecurityContextPersistenceFilter@3346e906, org.springframework.security.web.header.HeaderWriterFilter@2079fcfc, org.springframework.web.filter.CorsFilter@39159b14, org.springframework.security.web.authentication.logout.LogoutFilter@560be8c0, com.example.demo.security.JWTAuthenticationFilter@57ab4b33, com.example.demo.security.JWTAuthenticationVerficationFilter@43b2e7db, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@126d0868, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@12a9e864, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@46d51d5e, org.springframework.security.web.session.SessionManagementFilter@7865cc83, org.springframework.security.web.access.ExceptionTranslationFilter@3e1897d, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@64cdc310]
+2021-03-25 18:02:09.033  INFO 71428 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-03-25 18:02:09.148  INFO 71428 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-03-25 18:02:09.154  INFO 71428 --- [           main] com.example.demo.SareetaApplication      : Started SareetaApplication in 2.849 seconds (JVM running for 3.282)
+2021-03-25 18:02:28.030  INFO 71428 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-03-25 18:02:28.030  INFO 71428 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-03-25 18:02:28.037  INFO 71428 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+2021-03-25 18:02:28.113  INFO 71428 --- [nio-8080-exec-1] c.e.demo.controllers.UserController      : UserController:createUser - invoked
+2021-03-25 18:02:28.312  INFO 71428 --- [nio-8080-exec-1] c.e.demo.controllers.UserController      : UserController:createUser - new user successfully created.
+2021-03-25 18:02:45.209  INFO 71428 --- [nio-8080-exec-3] c.e.demo.controllers.UserController      : UserController:createUser - invoked
+2021-03-25 18:02:45.230  INFO 71428 --- [nio-8080-exec-3] com.example.demo.service.UserService     : UserService:prepareNewUser - DuplicateUsernameException.
+2021-03-25 18:02:45.231 ERROR 71428 --- [nio-8080-exec-3] c.e.demo.controllers.UserController      : UserController:createUser - User with username: figgy already exists.
+2021-03-25 18:03:17.899  INFO 71428 --- [nio-8080-exec-5] c.e.demo.controllers.UserController      : UserController:createUser - invoked
+2021-03-25 18:03:17.900  INFO 71428 --- [nio-8080-exec-5] com.example.demo.service.UserService     : UserService:isPasswordValid - password validation failed.
+2021-03-25 18:03:17.900  INFO 71428 --- [nio-8080-exec-5] c.e.demo.controllers.UserController      : UserController:createUser - bad request returned.
+2021-03-25 18:04:47.240  INFO 71428 --- [nio-8080-exec-7] c.e.demo.controllers.UserController      : UserController:createUser - invoked
+2021-03-25 18:04:47.241  INFO 71428 --- [nio-8080-exec-7] com.example.demo.service.UserService     : UserService:isPasswordValid - password validation failed.
+2021-03-25 18:04:47.241  INFO 71428 --- [nio-8080-exec-7] c.e.demo.controllers.UserController      : UserController:createUser - bad request returned.
+2021-03-25 18:07:23.967  INFO 71428 --- [nio-8080-exec-1] c.e.demo.controllers.UserController      : UserController:findById - invoked
+2021-03-25 18:10:14.723  INFO 71428 --- [nio-8080-exec-9] c.e.demo.controllers.UserController      : UserController:findById - invoked
+2021-03-25 18:11:48.012  INFO 71428 --- [nio-8080-exec-1] c.e.demo.controllers.UserController      : UserController:findById - invoked
+2021-03-25 18:13:29.044  INFO 71428 --- [nio-8080-exec-5] c.e.demo.controllers.UserController      : UserController:findByUserName - invoked
+2021-03-25 18:13:29.045  INFO 71428 --- [nio-8080-exec-5] com.example.demo.service.UserService     : ===> findByUsername - figgy
+2021-03-25 18:13:29.046  INFO 71428 --- [nio-8080-exec-5] com.example.demo.service.UserService     : ===> findByUsername:user from database - id: 1; username: figgycart: 1
+2021-03-25 18:17:08.790  INFO 71428 --- [io-8080-exec-10] c.e.demo.controllers.ItemController      : ItemController:getItems - invoked
+2021-03-25 18:20:08.012  INFO 71428 --- [nio-8080-exec-3] c.e.demo.controllers.ItemController      : ItemController:getItemById - invoked
+2021-03-25 18:23:51.151  INFO 71428 --- [nio-8080-exec-6] c.e.demo.controllers.ItemController      : ItemController:getItemsByName - invoked
+2021-03-25 18:28:23.624  INFO 71428 --- [nio-8080-exec-9] c.e.demo.controllers.CartController      : CartController:addTocart - invoked
+2021-03-25 18:28:23.627  INFO 71428 --- [nio-8080-exec-9] com.example.demo.service.CartService     : CartService:addTocart - request Username: figgy
+2021-03-25 18:28:23.628  INFO 71428 --- [nio-8080-exec-9] com.example.demo.service.CartService     : CartService:addTocart - authUsername: figgy
+2021-03-25 18:28:23.630  INFO 71428 --- [nio-8080-exec-9] com.example.demo.service.CartService     : CartService:addTocart - processing user: id: 1; username: figgycart: 1
+2021-03-25 18:28:23.631  INFO 71428 --- [nio-8080-exec-9] com.example.demo.service.CartService     : CartService:addTocart - processing item: 1
+2021-03-25 18:28:23.632  INFO 71428 --- [nio-8080-exec-9] com.example.demo.model.persistence.Cart  : Cart:addItem - id: 1;name: Round Widget
+2021-03-25 18:28:23.635  INFO 71428 --- [nio-8080-exec-9] com.example.demo.model.persistence.Cart  : Cart:addItem - id: 1;name: Round Widget
+2021-03-25 18:28:23.644  INFO 71428 --- [nio-8080-exec-9] c.e.demo.controllers.CartController      : CartController:addTocart - sending back cart items.
+2021-03-25 18:30:09.346  INFO 71428 --- [nio-8080-exec-1] c.e.demo.controllers.CartController      : CartController:addTocart - invoked
+2021-03-25 18:30:09.346  INFO 71428 --- [nio-8080-exec-1] com.example.demo.service.CartService     : CartService:addTocart - request Username: figgy
+2021-03-25 18:30:09.346  INFO 71428 --- [nio-8080-exec-1] com.example.demo.service.CartService     : CartService:addTocart - authUsername: figgy
+2021-03-25 18:30:09.347  INFO 71428 --- [nio-8080-exec-1] com.example.demo.service.CartService     : CartService:addTocart - processing user: id: 1; username: figgycart: 1
+2021-03-25 18:30:09.348  INFO 71428 --- [nio-8080-exec-1] com.example.demo.service.CartService     : CartService:addTocart - processing item: 2
+2021-03-25 18:30:09.348  INFO 71428 --- [nio-8080-exec-1] com.example.demo.model.persistence.Cart  : Cart:addItem - id: 2;name: Square Widget
+2021-03-25 18:30:09.348  INFO 71428 --- [nio-8080-exec-1] com.example.demo.model.persistence.Cart  : Cart:addItem - id: 2;name: Square Widget
+2021-03-25 18:30:09.348  INFO 71428 --- [nio-8080-exec-1] com.example.demo.model.persistence.Cart  : Cart:addItem - id: 2;name: Square Widget
+2021-03-25 18:30:09.350  INFO 71428 --- [nio-8080-exec-1] c.e.demo.controllers.CartController      : CartController:addTocart - sending back cart items.
+2021-03-25 18:33:46.450  WARN 71428 --- [nio-8080-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2021-03-25 18:34:13.336  INFO 71428 --- [nio-8080-exec-6] c.e.demo.controllers.CartController      : CartController:removeFromcart - invoked
+2021-03-25 18:34:13.336  INFO 71428 --- [nio-8080-exec-6] com.example.demo.service.CartService     : CartService:removeFromCart - authUsername: figgy
+2021-03-25 18:34:13.337  INFO 71428 --- [nio-8080-exec-6] com.example.demo.service.CartService     : CartService:addTocart - locating user record.
+2021-03-25 18:37:30.954  INFO 71428 --- [nio-8080-exec-9] c.e.demo.controllers.OrderController     : OrderController:submit - invoked
+2021-03-25 18:37:30.958  INFO 71428 --- [nio-8080-exec-9] com.example.demo.service.OrderService    : OrderService:submitOrder - username: figgy
+2021-03-25 18:37:30.958  INFO 71428 --- [nio-8080-exec-9] com.example.demo.service.OrderService    : OrderService:submitOrder - authName: figgy
+2021-03-25 18:37:30.959  INFO 71428 --- [nio-8080-exec-9] com.example.demo.service.UserService     : ===> findByUsername - figgy
+2021-03-25 18:37:30.960  INFO 71428 --- [nio-8080-exec-9] com.example.demo.service.UserService     : ===> findByUsername:user from database - id: 1; username: figgycart: 1
+2021-03-25 18:40:21.867  INFO 71428 --- [nio-8080-exec-1] c.e.demo.controllers.OrderController     : OrderController:getOrdersForUser - invoked
+2021-03-25 18:40:21.867  INFO 71428 --- [nio-8080-exec-1] com.example.demo.service.UserService     : ===> findByUsername - figgy
+2021-03-25 18:40:21.870  INFO 71428 --- [nio-8080-exec-1] com.example.demo.service.UserService     : ===> findByUsername:user from database - id: 1; username: figgycart: 1
