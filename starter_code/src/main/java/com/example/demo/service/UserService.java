@@ -33,6 +33,7 @@ public class UserService {
 		// First check that this username is not already in the database
 		User user = userRepository.findByUsername(username);
 		if (user != null) {
+			logger.info("UserService:prepareNewUser - UserNotFoundException.");
 			throw new DuplicateUsernameException("User with username: " + username + " already exists.");
 		} else {
 			user = new User();
@@ -49,9 +50,9 @@ public class UserService {
 		boolean result = true; // assume password is okay
 		if(password.length()<7 ||
 				!password.equals(confirmedPassword)){
+			logger.info("UserService:isPasswordValid - password validation failed.");
 			result = false;
-		}
-		
+		}		
 		return result;
 	}
 
@@ -74,6 +75,7 @@ public class UserService {
 		if (optionalUser.isPresent()) {
 			return optionalUser.get();
 		} else {
+			logger.info("UserService:findById - UserNotFoundException");
 			throw new UserNotFoundException("User with id: " + id + " not found.");
 		}
 	}

@@ -50,10 +50,12 @@ public class OrderService {
 			User user = userService.findByUsername(username);
 
 			if (user == null) {
+				logger.info("OrderService:getUserOrderHistory - UserNotFoundException");
 				throw new UserNotFoundException("The username '" + username + "' could not be found.");
 			}
 			return orderRepository.findByUser(user);
 		} else {
+			logger.info("OrderService:getUserOrderHistory - AuthorizationException");
 			throw new AuthorizationException("The user '" + username + "' is not authorized.");
 		}
 
