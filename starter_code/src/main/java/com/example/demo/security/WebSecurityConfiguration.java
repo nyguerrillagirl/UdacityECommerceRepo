@@ -27,7 +27,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.cors().and().csrf().disable().authorizeRequests()
                 .antMatchers(HttpMethod.POST, SecurityConstants.SIGN_UP_URL).permitAll()
                 .antMatchers("/h2-console/**").permitAll() // TEMPORARY for H2
-                .anyRequest().authenticated()
+                .antMatchers("/hello").permitAll() // TEMPORARY for TESTING IN TOMCAT
+               .anyRequest().authenticated()
                 .and()
                 .addFilter(new JWTAuthenticationFilter(authenticationManager()))
                 .addFilter(new JWTAuthenticationVerficationFilter(authenticationManager()))
