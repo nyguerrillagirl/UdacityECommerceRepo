@@ -34,7 +34,7 @@ public class CartController {
 			return ResponseEntity.ok(cart);
 		} catch (AuthorizationException ae) {
 			logger.error("AuthorizationException: " + ae.getMessage());
-			return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
 		} catch (Exception e) {
 			logger.error("Exception: " + e.getMessage());
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
@@ -49,7 +49,7 @@ public class CartController {
 			return ResponseEntity.ok(cart);
 		} catch (AuthorizationException ae) {
 			logger.error("AuthorizationException: " + ae.getMessage());
-			return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
 		} catch (Exception e) {
 			logger.error("Exception: " + e.getMessage());
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();

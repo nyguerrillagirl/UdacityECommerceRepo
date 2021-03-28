@@ -28,7 +28,7 @@ public class UserController {
 			User user = userService.findById(id);
 			return ResponseEntity.ok(user);
 		} else {
-			return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
 		}
 	}
 	
@@ -39,7 +39,7 @@ public class UserController {
 			User user = userService.findByUsername(username);
 			return user == null ? ResponseEntity.notFound().build() : ResponseEntity.ok(user);
 		} else {
-			return ResponseEntity.status(HttpStatus.FORBIDDEN).build();	
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();	
 		}
 	}
 	
